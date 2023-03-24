@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function About() {
   return (
-    <div>
-      this is about page
-    </div>
+    <>
+    <h2>this is about page</h2>
+    </>
   )
 }
