@@ -10,13 +10,14 @@ export function Navbar() {
       <div className='sub-container'>
         <ul>
           <Link to='/' className='home'>Home</Link>
-          <Link to='/about'>Products</Link>
-          <Link to='/cart'>Cart</Link>
+          <Link to='/product'>Products</Link>
           <Link to='/contact'>Contact</Link>
+          <Link to='/about'>About</Link>
+          <Link to='/cart'>Cart</Link>
         </ul>
       </div>
       <form>
-        <input type="text" className='search-input' id="" placeholder='search for item' />
+        <input type='text' className='search-input' placeholder='search for item' />
         <Button name='search' className='search-button' />
       </form>
       <div className='reg-buttons'>
