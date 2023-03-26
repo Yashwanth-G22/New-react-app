@@ -45,6 +45,8 @@ a{
 }
 .reg-buttons{
     width: 10%;
+    display: flex;
+    flex-direction: row;
 }
 .login-button{
     margin: 2px;

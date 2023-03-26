@@ -21,8 +21,8 @@ export function Navbar() {
         <Button name='search' className='search-button' />
       </form>
       <div className='reg-buttons'>
-      <Link to = '/login'><Button name = 'LogIn' className='login-button'/></Link>
-      <Link to= '/sigin'><Button name = 'SigIn' className='sigin-button'/></Link>
+      <Link to = '/login'><Button name = 'Login' className='login-button'/></Link>
+      <Link to = '/login'><Button name = 'Sigin' className='sigin-button'/></Link>
       </div>
 
     </div>

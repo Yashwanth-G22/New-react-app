@@ -7,6 +7,7 @@ import Products from "./Components/Products";
 import Cart from "./Components/cart/Cart";
 import Contact from "./Components/Contact";
 import About from "./Components/About";
+import Login from "./Components/loginPages/Login";
 
 export default function App(){
 
@@ -20,6 +21,7 @@ export default function App(){
       <Route path='/cart' element= {<Cart/>}/>
       <Route path='/contact' element= {<Contact/>}/>
       <Route path='/about' element = {<About/>}/>
+      <Route path='/login' element = {<Login/>}/>
      </Routes>
      </Router>
     </div>
