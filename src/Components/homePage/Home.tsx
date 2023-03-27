@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css'
+import { Link, Outlet } from 'react-router-dom';
 export default function Home () {
     return (
         <>
@@ -28,10 +29,12 @@ export default function Home () {
                          who had just paid $850,000 for a group of 99 rare of limited collection pairs of sport shoes</p>
                 </div>
                 <div>
-                    <img src='https://images.pexels.com/photos/5413291/pexels-photo-5413291.jpeg?auto=compress&cs=tinysrgb&w=600' alt='' height='500px' width= '500px' className='about-image'/>
+                    <Link to='/product'><img src='https://images.pexels.com/photos/5413291/pexels-photo-5413291.jpeg?auto=compress&cs=tinysrgb&w=600' alt='' height='500px' width= '500px' className='about-image'/></Link>
                 </div>
             </div>
-            
+            <div>
+                <Outlet/>
+            </div>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Admain() {
+export default function Admin() {
   return (
     <div>
       This is admian pages

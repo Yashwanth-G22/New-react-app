@@ -8,13 +8,14 @@ export default function Login() {
     const userNameRef = useRef<string>('') 
     let passwordRef = useRef<string>('') 
 
-    function adminLogin(e: Event) : void {
+    function adminLogin(e: Event) {
         e.preventDefault()
         if(userNameRef.current.value === adminName && passwordRef.current.value === adminPassword){
             console.log(userNameRef.current.value , passwordRef.current.value)
             console.log('hlo yash');
-            
+
         }
+        
     }
     function userLogin(e : Event){
       e.preventDefault();
@@ -39,7 +40,7 @@ export default function Login() {
             
             <div className='login-buttons '>
             <button type='submit'  onClick={userLogin}>USER LOGIN</button>
-            <Link to= 'login/admin' ><button type='submit' onClick={adminLogin}>ADMIN LOGIN</button></Link>
+            <button type='submit' onClick={adminLogin}>ADMIN LOGIN</button>
             </div>
             
         </form>

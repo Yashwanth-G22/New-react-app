@@ -4,7 +4,7 @@ import About from '../About'
 import Cart from '../cart/Cart'
 import Contact from '../Contact'
 import Home from '../homePage/Home'
-import Admain from '../loginPages/Admain'
+import Admin from '../loginPages/Admin'
 import Login from '../loginPages/Login'
 import Products from '../Products'
 
@@ -16,29 +16,27 @@ export default function ApplicationRoutes() {
         },
         {
             path: 'contact',
-            element: <Contact />
+            element: <Contact/>
         },
         {
             path: 'product',
-            element: <Products />
+            element: <Products/>
         },
         {
             path: 'about',
-            element: <About />
+            element: <About/>
         },
         {
             path: 'cart',
-            element: <Cart />
+            element: <Cart/>
         },
         {
-            path: 'login/',
-            element: <Login />,
-            children: [
-                {
-                    path: 'admin',
-                    element: <Admain />
-                }
-            ]
+            path: 'login',
+            element: <Login/>,
+        },
+        {
+            path: 'admin',
+            element: <Admin/>
         }
     ])
     return Routes;
