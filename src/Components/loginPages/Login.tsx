@@ -35,9 +35,6 @@ export default function Login() {
                 <label htmlFor="">Password</label>
                 <span><input type="password" placeholder='Enter password' ref={passwordRef}/></span>
             </div>
-
-
-            
             <div className='login-buttons '>
             <button type='submit'  onClick={userLogin}>USER LOGIN</button>
             <button type='submit' onClick={adminLogin}>ADMIN LOGIN</button>
