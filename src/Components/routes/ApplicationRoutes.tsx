@@ -6,7 +6,7 @@ import Contact from '../Contact'
 import Home from '../homePage/Home'
 import Admin from '../loginPages/Admin'
 import Login from '../loginPages/Login'
-import Products from '../Products'
+import Products from '../productPage/Products'
 
 export default function ApplicationRoutes() {
     let Routes = useRoutes([

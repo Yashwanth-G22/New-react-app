@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Home.css'
 import { Link, Outlet } from 'react-router-dom';
 export default function Home () {
+
     return (
         <>
             <div>
