@@ -5,8 +5,8 @@ import { Link, Outlet } from 'react-router-dom';
 export default function Login() {
     const adminName = 'yashwanth@gmail.com';
     const adminPassword = 'yashwanth';
-    const userNameRef = useRef(null) 
-    let passwordRef = useRef(null) 
+    const userNameRef = useRef<string>('') 
+    let passwordRef = useRef<string>('') 
 
     function adminLogin(e: Event) : void {
         e.preventDefault()
