@@ -3,7 +3,7 @@ import { useRoutes } from 'react-router-dom'
 import About from '../About'
 import Cart from '../cart/Cart'
 import Contact from '../Contact'
-import Home from '../Home'
+import Home from '../homePage/Home'
 import Admain from '../loginPages/Admain'
 import Login from '../loginPages/Login'
 import Products from '../Products'
@@ -41,9 +41,5 @@ export default function ApplicationRoutes() {
             ]
         }
     ])
-    return (
-        <div>
-
-        </div>
-    )
+    return Routes;
 }

@@ -1,0 +1,7 @@
+.home-image{
+    width: 95%;
+    height: 650px;
+    margin-left: 40px;
+    border: 2px outset red;
+    border-radius: 10px;
+}
