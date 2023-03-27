@@ -24,7 +24,7 @@ export default function Products() {
               <option value="">9</option>
               <option value="">10</option>
             </select>
-            <Link to= '/cart'><button>Add To Cart</button></Link>
+            <Link to= '/cart'><button >Add To Cart</button></Link>
             </div>
         })
        }

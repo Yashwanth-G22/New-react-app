@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './Home.css'
 import { Link, Outlet } from 'react-router-dom';
+import Products from '../productPage/Products';
 export default function Home () {
 
     return (
@@ -32,6 +33,9 @@ export default function Home () {
                 <div>
                     <Link to='/product'><img src='https://images.pexels.com/photos/5413291/pexels-photo-5413291.jpeg?auto=compress&cs=tinysrgb&w=600' alt='' height='500px' width= '500px' className='about-image'/></Link>
                 </div>
+            </div>
+            <div>
+                <Link to='/product'><Products/></Link>
             </div>
             <div>
                 <Outlet/>
