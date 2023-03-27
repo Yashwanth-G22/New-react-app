@@ -31,7 +31,7 @@ export default function ApplicationRoutes() {
             element: <Cart />
         },
         {
-            path: 'login',
+            path: 'login/',
             element: <Login />,
             children: [
                 {

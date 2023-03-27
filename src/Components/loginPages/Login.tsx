@@ -13,7 +13,7 @@ export default function Login() {
         if(userNameRef.current.value === adminName && passwordRef.current.value === adminPassword){
             console.log(userNameRef.current.value , passwordRef.current.value)
             console.log('hlo yash');
-            <Link to= '/admin' >click</Link>
+            
         }
     }
     function userLogin(e : Event){
@@ -34,14 +34,19 @@ export default function Login() {
                 <label htmlFor="">Password</label>
                 <span><input type="password" placeholder='Enter password' ref={passwordRef}/></span>
             </div>
+
+
+            
             <div className='login-buttons '>
-            <button type='submit'  onClick={userLogin}>LOGIN AS USER</button>
-            <button type='submit' onClick={adminLogin}>LOGIN AS ADMIN</button>
+            <button type='submit'  onClick={userLogin}>USER LOGIN</button>
+            <Link to= 'login/admin' ><button type='submit' onClick={adminLogin}>ADMIN LOGIN</button></Link>
             </div>
             
         </form>
       </div>
-      
+      <div>
+        <Outlet/>
+      </div>
     </>
   )
 }

@@ -5,3 +5,14 @@
     border: 2px outset red;
     border-radius: 10px;
 }
+.information-about-item{
+    width: 40%;
+    margin-left: 40px;
+    font-style: oblique;
+}
+.about-image{
+    margin-left: 54%;
+    margin-top: -32%;
+    background-color: black;
+    border-radius: 100%;
+}
