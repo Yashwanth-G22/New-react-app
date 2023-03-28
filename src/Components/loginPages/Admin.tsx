@@ -1,34 +1,32 @@
-import React ,{ ChangeEvent, Component, useState }from 'react';
+import { style } from '@mui/system';
+import React ,{ ChangeEvent, useState }from 'react';
 import { serverMethod } from '../../model/serverFetchMethods';
 import { Iproducts } from '../../utils/interface';
-import { url } from '../productPage/Products';
 
 export default function Admin() {
   const [id , setId] = useState<number>()
   const [name , setName] = useState<string>()
   const [image , setImage] = useState<string>()
   const [price , setPrice] = useState<string>()
+  const [ view , setView ] = useState<string>('none')
 
-  const newProduct= {
+  const newProduct = {
     id : id,
     name : name ,
     image : image,
     price : price
   }
 
-  const handleChange = (e : ChangeEvent<HTMLInputElement>) => {
+  async function handleChange(e : ChangeEvent<HTMLInputElement>){
     e.preventDefault();
     if(name !== undefined && id !== undefined && image !== undefined && price !== undefined){
       console.log(name , id , image , price)
 
-      serverMethod.postSingleItem(newProduct)
-      // fetch(url, { 
-      //   method : 'POST',
-      //   body : JSON.stringify(newProduct),
-      //   headers : {'content-type': 'application/json' }
-      // })
-
+     let result = await serverMethod.postSingleItem(newProduct)
     }
+  }
+  function addNewProduct(){
+    setView('');
   }
 
   return (<>
@@ -36,7 +34,8 @@ export default function Admin() {
           <div>
 
           </div>
-          <div>
+          <button onClick={addNewProduct} >Add new product</button>
+          <div style={{display : view}}>
             <form action="" onSubmit={handleChange}>
               <div>
               <label htmlFor="">Enter Id :</label>

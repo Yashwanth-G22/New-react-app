@@ -35,12 +35,12 @@ export let url = `http://localhost:4000/products`;
         })
     }
 }
-export default function serverFetchMethods() {
+// export default function serverFetchMethods() {
  
-  return (
-    <div></div>
-   )
-}
+//   return (
+//     <div></div>
+//    )
+// }
 
 function set(url : string, options : any) : Promise<Response > | any{
     try{

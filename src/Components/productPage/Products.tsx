@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { serverMethod } from '../../model/serverFetchMethods';
 import './Product.css'
 
-export let url = `http://localhost:4000/products`;
+// export let url = `http://localhost:4000/products`;
 export default function Products() {
   const [items, setitems] = useState<Iproducts[]>([]);
 

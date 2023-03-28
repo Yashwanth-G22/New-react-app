@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginFrom from '../utils/LoginFrom'
+import LoginFrom from '../../utils/LoginFrom'
 
 export default function Contact() {
   return (
