@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
-import redux from 'redux';
 import './Login.css';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const adminName = 'yashwanth@gmail.com';
@@ -23,10 +22,11 @@ export default function Login() {
   function userLogin(e: FormEvent<HTMLInputElement>) {
     e.preventDefault();
     console.log('this is user login');
+    navigate('/product')
   }
   return (
     <>
-      <div className='admin-page'>
+      <div className='login-page'>
         <h2>LOGIN PAGE</h2>
         <form className='login-form' >
           <div>
@@ -44,9 +44,7 @@ export default function Login() {
           </div>
         </form>
       </div>
-      <div>
-        <Outlet />
-      </div>
+     
     </>
   )
 }
