@@ -1,5 +1,5 @@
-import React from 'react'
-import { Iproducts } from '../utils/interface';
+
+import { Iproducts } from '../utils/types';
 
 export let url = `http://localhost:4000/products`;
 
@@ -16,7 +16,7 @@ export let url = `http://localhost:4000/products`;
         })
         return response.json();
     },
-    putSingleItem: async function () {
+    putSingleItem: async function (id : number) {
         await set(`${url}/${id}`, {
             method: 'PUT',
             body: JSON.stringify({

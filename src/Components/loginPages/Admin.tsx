@@ -1,10 +1,10 @@
 import { style } from '@mui/system';
 import React ,{ ChangeEvent, useState }from 'react';
 import { serverMethod } from '../../model/serverFetchMethods';
-import { Iproducts } from '../../utils/interface';
+import { Iproducts } from '../../utils/types';
 
 export default function Admin() {
-  const [id , setId] = useState<number>()
+  const [id , setId] = useState<string | number>()
   const [name , setName] = useState<string>()
   const [image , setImage] = useState<string>()
   const [price , setPrice] = useState<string>()
@@ -17,7 +17,7 @@ export default function Admin() {
     price : price
   }
 
-  async function handleChange(e : ChangeEvent<HTMLInputElement>){
+  async function handleChange(e : ChangeEvent<HTMLFormElement>){
     e.preventDefault();
     if(name !== undefined && id !== undefined && image !== undefined && price !== undefined){
       console.log(name , id , image , price)

@@ -21,20 +21,22 @@ div>label{
 input{
     width: 50%;
     height: 30px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    /* margin-left: 150px; */
+    margin: auto;
 }
 .login-buttons{
     width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 150px;
+    margin: auto;
 }
 .login-buttons>button{
     cursor: pointer;
     height: 30px;
     margin-top: 10px;
 }
-.login-page{
+.admin-page{
     text-align: center;
 }

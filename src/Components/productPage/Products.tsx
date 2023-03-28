@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Iproducts } from '../../utils/interface';
+import { Iproducts } from '../../utils/types';
 import { Link } from 'react-router-dom';
 import { serverMethod } from '../../model/serverFetchMethods';
 import './Product.css'
@@ -16,7 +16,7 @@ export default function Products() {
       <div className='container'>
         {
           items?.map((item) => {
-            return <div className='product-view'>
+            return <div className='product-view' key={item.id}>
               <h4>Name : {item.name}</h4>
               <img src={item.image} className='product-image' />
               <h5>Price : {item.price}</h5>

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Components/loginPages/Login.css'
 
-export default function LoginFrom(props) {
+export default function LoginFrom(props : any) {
     const { name , email , content , button } = props;
   return (
     <>

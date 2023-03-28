@@ -13,8 +13,8 @@ export default function About() {
         It employs more than 44,000 people worldwide and in 2014 the brand alone was valued as $19 billion (€17,5 billion), making it the most valuable brand between sports businesses.Founded by Bill Bowerman and Phil Knight on January 25 1964, as Blue Ribbon Sports, the company became officially Nike, Inc. on May 30 1971. The company was named after the Greek goddess of victory, Nike (Νίκη).</p>
       <div className="about-card-container">
         <img className="about-image1" src="" alt="" />
-        <img className="about-image2" src="../../../public/fitness club.jpg" alt="" />
-        <img className="about-image3" src="../../../public/nutrition.png" alt="" />
+        <img className="about-image2" src="" alt="" />
+        <img className="about-image3" src="" alt="" />
       </div>
       <h1 className='find-us' >FOLLOW US NOW HERE FOR ANY UPDATES</h1>
       <div className="social-media">
