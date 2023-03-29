@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Iproducts } from '../../utils/types';
 import { Link } from 'react-router-dom';
-import { serverMethod } from '../../model/serverFetchMethods';
+import { serverMethod } from '../../../hooks/serverFetchMethods';
 import './Product.css'
 
 // export let url = `http://localhost:4000/products`;
 export default function Products() {
-  const [items, setitems] = useState<Iproducts[]>([]);
-
+  const [items, setItems] = useState<Iproducts[]>([]);
+  console.log(items)
 
   useEffect(() => {
-    serverMethod.getAllItems().then(res => res.json()).then(data => setitems(data) )} , [])
+    serverMethod.getAllItems().then(data => setItems(data) )} , [])
   return (
     <>
       <div className='container'>

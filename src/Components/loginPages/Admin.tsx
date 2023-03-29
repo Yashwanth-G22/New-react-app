@@ -1,63 +1,89 @@
-import { style } from '@mui/system';
-import React ,{ ChangeEvent, useState }from 'react';
-import { serverMethod } from '../../model/serverFetchMethods';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { serverMethod } from '../../../hooks/serverFetchMethods';
 import { Iproducts } from '../../utils/types';
+import './Login.css';
+import './table.css'
+import Table from './table';
 
 export default function Admin() {
-  const [id , setId] = useState<string | number>()
-  const [name , setName] = useState<string>()
-  const [image , setImage] = useState<string>()
-  const [price , setPrice] = useState<string>()
-  const [ view , setView ] = useState<string>('none')
+  const navigate = useNavigate()
+  const [view, setView] = useState<string>('none')
+  const [newData , setNewData] = useState([])
+  
+  const [productDetails, setProductDetails] = useState<Iproducts>({id:'', name:'', image:'', price: null})
 
   const newProduct = {
-    id : id,
-    name : name ,
-    image : image,
-    price : price
+    id: productDetails.id,
+    name: productDetails.name,
+    image: productDetails.image,
+    price: productDetails.price
   }
 
-  async function handleChange(e : ChangeEvent<HTMLFormElement>){
+  async function handleChange(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    if(name !== undefined && id !== undefined && image !== undefined && price !== undefined){
-      console.log(name , id , image , price)
-
-     let result = await serverMethod.postSingleItem(newProduct)
+    if (productDetails.name !== undefined && productDetails.id !== undefined && productDetails.image !== undefined && productDetails.price !== undefined) {
+      console.log(productDetails.name,productDetails.id, productDetails.image, productDetails.price)
+      let result = await serverMethod.postSingleItem(newProduct)
+      console.log(result)
+      setNewData(oldData => [...oldData , result])
     }
   }
-  function addNewProduct(){
+  function addNewProduct() {
     setView('');
   }
 
+  async function getAllItems(){
+    let out = await serverMethod.getAllItems()
+    console.log(out)
+    out?setNewData(out):'Error'
+  }
+  useEffect(()=>{
+    getAllItems()
+  },[])
   return (<>
-        <div>
-          <div>
+    <div>
+      <button onClick={addNewProduct} style={{ display: view ? '' : 'none' }} className='admin-button' >Add new product</button>
+      <div style={{ display: view }}>
+        <form action="" className='add-new-item' onSubmit={handleChange}>
+          <label htmlFor="">Enter Id :</label>
+          <input type="number" placeholder='Enter Id' onChange={(e) => setProductDetails({...productDetails, id : e.target.value})} />
+          <label htmlFor="">Name :</label>
+          <input type="text" placeholder='Brand Name ' onChange={(e) => setProductDetails({...productDetails, name : e.target.value})}/>
+          <label htmlFor="">Image :</label>
+          <input type="text" placeholder='Image Url string' onChange={(e) => setProductDetails({...productDetails, image : e.target.value})} />
+          <label htmlFor="">Price :</label>
+          <input type="number" placeholder='Enter price' onChange={(e) => setProductDetails({...productDetails, price : Number(e.target.value)})} />
+          <button type='submit' className='new-item-button'>Add product</button>
+        </form>
+      </div>
+    </div>
 
-          </div>
-          <button onClick={addNewProduct} >Add new product</button>
-          <div style={{display : view}}>
-            <form action="" onSubmit={handleChange}>
-              <div>
-              <label htmlFor="">Enter Id :</label>
-              <input type="number" placeholder='Enter Id' onChange={(e)=>setId(e.target.value)}/>
-              </div>
-              <div>
-              <label htmlFor="">Name :</label>
-              <input type="text" placeholder='Brand Name ' onChange={(e)=>setName(e.target.value)}/>
-              </div>
-              <div>
-              <label htmlFor="">Image :</label>
-              <input type="text"  placeholder='Image Url string' onChange={(e)=>setImage(e.target.value)}/>
-              </div>
-              <div> 
-              <label htmlFor="">Price :</label>
-              <input type="number" placeholder='Enter price' onChange={(e)=>setPrice(e.target.value)}/>
-              </div>
-              <button type='submit'>Add product</button>
-            </form>
-          </div>
-        </div>
-    </>
+    <div className='table'>
+      <table>
+       <thead>
+       <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Edit</th>
+        </tr>
+       </thead>
+       <tbody>
+        {
+          newData?.map((items)=>{
+            return <>
+              <Table data = {items}/>
+            </>
+          })
+        }
+           
+       </tbody>
+        
+      </table>
+    </div> 
+  </>
   )
 }
 

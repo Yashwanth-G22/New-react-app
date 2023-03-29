@@ -1,11 +1,11 @@
 
-import { Iproducts } from '../utils/types';
+import { Iproducts } from '../src/utils/types';
 
 export let url = `http://localhost:4000/products`;
 
  export const serverMethod = {
     getAllItems: async function () {
-        return await fetch(url, { method: 'GET' })
+        return await (await fetch(url, { method: 'GET' })).json()
         
     },
     
@@ -35,12 +35,7 @@ export let url = `http://localhost:4000/products`;
         })
     }
 }
-// export default function serverFetchMethods() {
- 
-//   return (
-//     <div></div>
-//    )
-// }
+
 
 function set(url : string, options : any) : Promise<Response > | any{
     try{
