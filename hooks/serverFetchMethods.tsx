@@ -1,43 +1,42 @@
 
-import { Iproducts } from '../src/utils/types';
+import { Iproducts } from '../src/types';
 
-export let url = `http://localhost:4000/products`;
 
  export const serverMethod = {
-    getAllItems: async function () {
+    getAllItems: async function (url : string) {
         return await (await fetch(url, { method: 'GET' })).json()
         
     },
     
-    postSingleItem: async function (object : Iproducts) {
-        const response = await set(url, {
+    postSingleItem: async function ( url : string , object : object ) {
+        const response = await setObjectStructure(url, {
             method: 'POST',
             body: JSON.stringify(object)
         })
         return response.json();
     },
-    putSingleItem: async function (id : number) {
-        await set(`${url}/${id}`, {
+    putSingleItem: async function (url : string,id : number) {
+        await setObjectStructure(`${url}/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 
             })
         })
     },
-    deleteSingleItem: function (id : number) {
-        set(`${url}/${id}`, {
+    deleteSingleItem: function (url : string,id : number) {
+        setObjectStructure(`${url}/${id}`, {
             method: 'DELETE',
         })
     },
     deleteAllItems: function () {
-        set(`https://mk-todo-web-api.azurewebsites.net/deleteAll`, {
+        setObjectStructure(`https://mk-todo-web-api.azurewebsites.net/deleteAll`, {
             method: 'DELETE'
         })
     }
 }
 
 
-function set(url : string, options : any) : Promise<Response > | any{
+function setObjectStructure(url : string, options : any) : Promise<Response > | any{
     try{
      const header = new Headers
     header.append('content-type', 'application/json');

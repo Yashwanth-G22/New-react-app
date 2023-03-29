@@ -1,15 +1,17 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState , useCallback} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { serverMethod } from '../../../hooks/serverFetchMethods';
-import { Iproducts } from '../../utils/types';
-import './login.css';
-import './table.css'
-import Table from './table';
+import { serverMethod } from '../../../../hooks/serverFetchMethods';
+import { Iproducts } from '../../../types';
+import '../login.css';
+import '../table.css'
+import {dataBaseUrl} from '../../../../application.json'
+import Container from './container';
 
 export default function Admin() {
   const navigate = useNavigate()
   const [view, setView] = useState<string>('none')
-  const [newData, setNewData] = useState([])
+  const [newData, setNewData] = useState <Iproducts[]>([])
+  let productUrl = dataBaseUrl.products
 
   const [productDetails, setProductDetails] = useState<Iproducts>({ name: '', image: '', price: '' })
 
@@ -21,11 +23,13 @@ export default function Admin() {
 
   async function handleChange(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (productDetails.name !== undefined  && productDetails.image !== undefined && productDetails.price !== undefined) {
+    if (productDetails.name !== undefined  
+      && productDetails.image !== undefined 
+      && productDetails.price !== undefined) {
       console.log(productDetails.name, productDetails.image, productDetails.price)
-      let result = await serverMethod.postSingleItem(newProduct)
-      console.log(result)
-      setNewData(oldData => [...oldData, result])
+      let newItem = await serverMethod.postSingleItem(productUrl,newProduct)
+      console.log(newItem)
+      setNewData(oldItems => [...oldItems, newItem])
       setProductDetails({  name: '', image: '', price: '' })
     }
   }
@@ -34,19 +38,19 @@ export default function Admin() {
   }
 
   async function getAllItems() {
-    let out = await serverMethod.getAllItems()
-    console.log(out)
-    out ? setNewData(out) : 'Error'
+    let out = await serverMethod.getAllItems(productUrl);
+    console.log(out);
+    out ? setNewData(out) : console.log('Error');
   }
   useEffect(() => {
     getAllItems()
   }, [])
-  function deleteSingleItem(id: number): void {
-    serverMethod.deleteSingleItem(id);
-    setNewData(oldData => [...newData])
+  const deleteSingleItem =(id: number)=>{
+    serverMethod.deleteSingleItem(productUrl,id);
+    getAllItems();
   }
   return (<>
-    <h2 align="center">Admin Page</h2>
+    <h2 className='admin-title'>Admin Page</h2>
     <div>
       <button onClick={addNewProduct} style={{ display: view ? '' : 'none' }} className='admin-button' >Add new product</button>
       <div style={{ display: view }}>
@@ -71,31 +75,28 @@ export default function Admin() {
         </form>
       </div>
     </div>
-
-    <div className='table'>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            newData?.map((items) => {
-              return <>
-                <Table {...{items, deleteSingleItem}}/>
-              </>
-            })
-          }
-        </tbody>
-      </table>
-    </div>
+    <Container newData = {newData} deleteSingleItem = {deleteSingleItem}/>
   </>
   )
 }
+
+
+// function container(){
+
+//   const [data,setDate]=useState();
+//   useEffect()=>(
+//     setDate(data);
+//   )
+
+//   const add = ()=>(
+
+//   );
+
+//   const delete =(id)=>(
+
+//   )
+
+//   <table data={data} add={add}/ delete={delete}>
+// }
 
 

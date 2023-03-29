@@ -1,6 +1,6 @@
 .login-form{
     width: 40%;
-    height: 200px;
+    height: auto;
     border: 2px inset black;
     text-align: center;
     gap: 3px;
@@ -34,8 +34,9 @@ input{
 }
 .login-buttons>button{
     cursor: pointer;
-    height: 30px;
+    height: 40px;
     margin-top: 10px;
+    margin-bottom:10px ;
 }
 .admin-page{
     text-align: center;
@@ -55,4 +56,7 @@ input{
     width: 20%;
     margin-top: 10px;
     margin-left: 120px;
+}
+.admin-title{
+    text-align: center;
 }

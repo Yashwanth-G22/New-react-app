@@ -4,3 +4,6 @@ export interface Iproducts {
     price : number | string
     id? : number
 }
+export interface Icontainer {
+    
+}
