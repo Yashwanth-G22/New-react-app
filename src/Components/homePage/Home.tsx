@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './Home.css'
 import { Link, Outlet } from 'react-router-dom';
 import Products from '../productPage/Products';
-// import {application} from "../../../application.json"
+import {home} from "../../../application.json"
 export default function Home () {
 
     return (
@@ -12,10 +12,10 @@ export default function Home () {
             </div>
             <div className='about-item'>
                 <div className='information-about-item'>
-                    {/* <p>{application.aboutNike}</p> */}
+                    <p>{home.infoNike}</p>
                 </div>
                 <div>
-                    <Link to='/product'><img src='https://images.pexels.com/photos/5413291/pexels-photo-5413291.jpeg?auto=compress&cs=tinysrgb&w=600' alt='' height='500px' width= '500px' className='about-image'/></Link>
+                    <Link to='/product'><img src='https://images.pexels.com/photos/5413291/pexels-photo-5413291.jpeg?auto=compress&cs=tinysrgb&w=600' alt=''  className='about-image'/></Link>
                 </div>
             </div>
             <div>

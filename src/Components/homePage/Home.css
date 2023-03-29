@@ -11,6 +11,8 @@
     font-style: oblique;
 }
 .about-image{
+    height: 500px;
+    width: 500px;
     margin-left: 54%;
     margin-top: -32%;
     background-color: black;

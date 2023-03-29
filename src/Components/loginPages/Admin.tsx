@@ -9,9 +9,9 @@ import Table from './table';
 export default function Admin() {
   const navigate = useNavigate()
   const [view, setView] = useState<string>('none')
-  const [newData , setNewData] = useState([])
-  
-  const [productDetails, setProductDetails] = useState<Iproducts>({id:'', name:'', image:'', price: null})
+  const [newData, setNewData] = useState([])
+
+  const [productDetails, setProductDetails] = useState<Iproducts>({ id: '', name: '', image: '', price: null })
 
   const newProduct = {
     id: productDetails.id,
@@ -23,37 +23,55 @@ export default function Admin() {
   async function handleChange(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     if (productDetails.name !== undefined && productDetails.id !== undefined && productDetails.image !== undefined && productDetails.price !== undefined) {
-      console.log(productDetails.name,productDetails.id, productDetails.image, productDetails.price)
+      console.log(productDetails.name, productDetails.id, productDetails.image, productDetails.price)
       let result = await serverMethod.postSingleItem(newProduct)
       console.log(result)
-      setNewData(oldData => [...oldData , result])
+      setNewData(oldData => [...oldData, result])
+      setProductDetails({ id: '', name: '', image: '', price: null })
     }
   }
   function addNewProduct() {
     setView('');
   }
 
-  async function getAllItems(){
+  async function getAllItems() {
     let out = await serverMethod.getAllItems()
     console.log(out)
-    out?setNewData(out):'Error'
+    out ? setNewData(out) : 'Error'
   }
-  useEffect(()=>{
+  useEffect(() => {
     getAllItems()
-  },[])
+  }, [])
+  function deleteSingleItem(id: number): void {
+    serverMethod.deleteSingleItem(id);
+    setNewData(oldData => [...newData])
+  }
   return (<>
+    <h2 align="center">Admin Page</h2>
     <div>
       <button onClick={addNewProduct} style={{ display: view ? '' : 'none' }} className='admin-button' >Add new product</button>
       <div style={{ display: view }}>
-        <form action="" className='add-new-item' onSubmit={handleChange}>
+        <form action="submit" className='add-new-item' onSubmit={handleChange}>
           <label htmlFor="">Enter Id :</label>
-          <input type="number" placeholder='Enter Id' onChange={(e) => setProductDetails({...productDetails, id : e.target.value})} />
+          <input type="number" placeholder='Enter Id'
+            value={productDetails.id}
+            onChange={(e) => setProductDetails({ ...productDetails, id: e.target.value })} />
+
           <label htmlFor="">Name :</label>
-          <input type="text" placeholder='Brand Name ' onChange={(e) => setProductDetails({...productDetails, name : e.target.value})}/>
+          <input type="text" placeholder='Brand Name '
+            value={productDetails.name}
+            onChange={(e) => setProductDetails({ ...productDetails, name: e.target.value })} />
+
           <label htmlFor="">Image :</label>
-          <input type="text" placeholder='Image Url string' onChange={(e) => setProductDetails({...productDetails, image : e.target.value})} />
+          <input type="text" placeholder='Image Url string'
+            value={productDetails.image}
+            onChange={(e) => setProductDetails({ ...productDetails, image: e.target.value })} />
+
           <label htmlFor="">Price :</label>
-          <input type="number" placeholder='Enter price' onChange={(e) => setProductDetails({...productDetails, price : Number(e.target.value)})} />
+          <input type="number" placeholder='Enter price'
+            value={productDetails.price}
+            onChange={(e) => setProductDetails({ ...productDetails, price: Number(e.target.value) })} />
+
           <button type='submit' className='new-item-button'>Add product</button>
         </form>
       </div>
@@ -61,28 +79,28 @@ export default function Admin() {
 
     <div className='table'>
       <table>
-       <thead>
-       <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Image</th>
-          <th>Price</th>
-          <th>Edit</th>
-        </tr>
-       </thead>
-       <tbody>
-        {
-          newData?.map((items)=>{
-            return <>
-              <Table data = {items}/>
-            </>
-          })
-        }
-           
-       </tbody>
-        
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            newData?.map((items) => {
+              return <>
+                <Table data={items} deleteSingleItem={deleteSingleItem} />
+              </>
+            })
+          }
+
+        </tbody>
+
       </table>
-    </div> 
+    </div>
   </>
   )
 }

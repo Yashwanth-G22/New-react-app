@@ -27,7 +27,7 @@ export default function Login() {
     <>
       <div className='admin-page'>
         <h2>LOGIN PAGE</h2>
-        <form className='login-form' >
+        <form className='login-form' action='submit'>
           <div>
             <label htmlFor="">User Name</label>
             <input type="text"
