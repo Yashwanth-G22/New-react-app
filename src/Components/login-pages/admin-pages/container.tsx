@@ -1,7 +1,7 @@
 import React , { memo} from 'react'
-import { Iproducts } from '../../../types'
+import { Icontainer } from '../../../types'
 import Table from './table'
- function Container({newData , deleteSingleItem}) {
+ function Container({newData , deleteSingleItem} : Icontainer) {
   return (<>
         <div className='table'>
       <table>

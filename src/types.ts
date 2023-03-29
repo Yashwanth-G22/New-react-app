@@ -1,9 +1,9 @@
 export interface Iproducts {
     name : string,
     image : string,
-    price : number | string
+    price : number | string,
     id? : number
 }
-export interface Icontainer {
-    
+export interface Icontainer extends Iproducts {
+    deleteSingleItem : Function
 }
