@@ -1,8 +1,8 @@
 import React from "react";
-import { Navbar } from "./Components/navbar/Navbar";
+import { Navbar } from "./Components/navbar/navbar";
 import { BrowserRouter as Router } from "react-router-dom";
 import './App.css'
-import ApplicationRoutes from "./Components/routes/ApplicationRoutes";
+import ApplicationRoutes from "./Components/routes/applicationRoutes";
 
 export default function App(){
 

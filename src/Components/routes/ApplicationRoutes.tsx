@@ -3,10 +3,10 @@ import { useRoutes } from 'react-router-dom'
 import About from '../about/About'
 import Cart from '../cart/Cart'
 import Contact from '../contact/Contact'
-import Home from '../homePage/Home'
-import Admin from '../loginPages/Admin'
-import Login from '../loginPages/Login'
-import Products from '../productPage/Products'
+import Home from '../home-page/Home'
+import Admin from '../login-pages/Admin'
+import Login from '../login-pages/Login'
+import Products from '../product-page/Products'
 
 export default function ApplicationRoutes() {
     let Routes = useRoutes([

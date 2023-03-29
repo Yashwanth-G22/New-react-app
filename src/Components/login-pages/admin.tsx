@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { serverMethod } from '../../../hooks/serverFetchMethods';
 import { Iproducts } from '../../utils/types';
-import './Login.css';
+import './login.css';
 import './table.css'
 import Table from './table';
 
@@ -11,10 +11,9 @@ export default function Admin() {
   const [view, setView] = useState<string>('none')
   const [newData, setNewData] = useState([])
 
-  const [productDetails, setProductDetails] = useState<Iproducts>({ id: '', name: '', image: '', price: null })
+  const [productDetails, setProductDetails] = useState<Iproducts>({ name: '', image: '', price: '' })
 
   const newProduct = {
-    id: productDetails.id,
     name: productDetails.name,
     image: productDetails.image,
     price: productDetails.price
@@ -22,12 +21,12 @@ export default function Admin() {
 
   async function handleChange(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (productDetails.name !== undefined && productDetails.id !== undefined && productDetails.image !== undefined && productDetails.price !== undefined) {
-      console.log(productDetails.name, productDetails.id, productDetails.image, productDetails.price)
+    if (productDetails.name !== undefined  && productDetails.image !== undefined && productDetails.price !== undefined) {
+      console.log(productDetails.name, productDetails.image, productDetails.price)
       let result = await serverMethod.postSingleItem(newProduct)
       console.log(result)
       setNewData(oldData => [...oldData, result])
-      setProductDetails({ id: '', name: '', image: '', price: null })
+      setProductDetails({  name: '', image: '', price: '' })
     }
   }
   function addNewProduct() {
@@ -52,10 +51,6 @@ export default function Admin() {
       <button onClick={addNewProduct} style={{ display: view ? '' : 'none' }} className='admin-button' >Add new product</button>
       <div style={{ display: view }}>
         <form action="submit" className='add-new-item' onSubmit={handleChange}>
-          <label htmlFor="">Enter Id :</label>
-          <input type="number" placeholder='Enter Id'
-            value={productDetails.id}
-            onChange={(e) => setProductDetails({ ...productDetails, id: e.target.value })} />
 
           <label htmlFor="">Name :</label>
           <input type="text" placeholder='Brand Name '
@@ -92,13 +87,11 @@ export default function Admin() {
           {
             newData?.map((items) => {
               return <>
-                <Table data={items} deleteSingleItem={deleteSingleItem} />
+                <Table {...{items, deleteSingleItem}}/>
               </>
             })
           }
-
         </tbody>
-
       </table>
     </div>
   </>

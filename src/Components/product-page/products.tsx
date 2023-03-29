@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Iproducts } from '../../utils/types';
 import { Link } from 'react-router-dom';
 import { serverMethod } from '../../../hooks/serverFetchMethods';
-import './Product.css'
+import './product.css'
 
 // export let url = `http://localhost:4000/products`;
 export default function Products() {

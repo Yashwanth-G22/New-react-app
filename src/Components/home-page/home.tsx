@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import './Home.css'
+import './home.css'
 import { Link, Outlet } from 'react-router-dom';
-import Products from '../productPage/Products';
+import Products from '../product-page/Products';
 import {home} from "../../../application.json"
 export default function Home () {
 
