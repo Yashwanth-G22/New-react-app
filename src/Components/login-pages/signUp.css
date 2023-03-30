@@ -1,16 +1,16 @@
-.signIn-form{
+.signUp-form{
     display: grid;
     grid-template-columns: 600px;
     justify-content: center;
     margin-top: 30px;
 
 }
-.signIn-form div{
+.signUp-form div{
     display: block;
     margin: 30px; 
 
 }
-.signIn-form button {
+.signUp-form button {
     margin-top: 10px;
     margin-bottom: 10px;
     height: 40px;
@@ -20,6 +20,6 @@
 tr{
     border: none;
 }
-.signIn-form label:last-child{
+.signUp-form label:last-child{
     margin-left: -100px;
 }

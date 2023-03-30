@@ -7,7 +7,7 @@ import Home from '../home-page/home'
 import Admin from '../login-pages/admin-pages/admin'
 import Login from '../login-pages/login'
 import Products from '../product-page/Products'
-import SignIn from '../login-pages/signIn'
+import SignUp from '../login-pages/signUp'
 export default function ApplicationRoutes() {
     let Routes = useRoutes([
         {
@@ -35,8 +35,8 @@ export default function ApplicationRoutes() {
             element: <Admin/>
         },
         {
-            path : 'signin',
-            element : <SignIn/>
+            path : 'signUp',
+            element : <SignUp/>
         }
     ])
     return Routes;

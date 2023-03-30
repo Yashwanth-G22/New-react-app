@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import './signIn.css'
+import './signUp.css'
 import { dataBaseUrl } from '../../../application.json';
 import { serverMethod } from '../../../hooks/serverFetchMethods';
 import { Navigate, useNavigate } from 'react-router-dom';
-export default function SignIn() {
+export default function SignUp() {
     let userUrl = dataBaseUrl.users;
     const nevigate = useNavigate()
     const [userCredentials, setCredentails] = useState({ email: '', password: '', conformPassword: '' })
@@ -26,7 +26,7 @@ export default function SignIn() {
     }
     return (<>
         <div>
-            <form action="" className='signIn-form' onSubmit={handleSubmit}>
+            <form action="" className='signUp-form' onSubmit={handleSubmit}>
                 <table>
                     <tr>
                         <div>

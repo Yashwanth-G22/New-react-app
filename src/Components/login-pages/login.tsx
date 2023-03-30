@@ -38,25 +38,17 @@ export default function Login() {
   function userLogin(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     console.log('this is user login');
-    console.log(userCredentils)
-    let value = userCredentils.filter((details)=>{
+     userCredentils.filter((details)=>{
       if(details.email=== userNameRef.current?.value){
           if(details.password === passwordRef.current?.value){
             navigate('/product');
           }else{
-            alert('plz signuo before login')
-            setView('');
-            navigate('/signin');
-          }
-      }else{
-            setView('');
             alert('plz signup before login')
-            navigate('/signin');
+            setView('');
+            navigate('/signUp');
+          }
       }
-
-    })
-    console.log(value)
-    
+    }) 
 
   }
   return (

@@ -23,14 +23,16 @@ export default function Admin() {
 
   async function handleChange(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (productDetails.name !== undefined  
-      && productDetails.image !== undefined 
-      && productDetails.price !== undefined) {
+    if (productDetails.name !== '' 
+      && productDetails.image !== '' 
+      && productDetails.price !== '') {
       console.log(productDetails.name, productDetails.image, productDetails.price)
       let newItem = await serverMethod.postSingleItem(productUrl,newProduct)
       console.log(newItem)
       setNewData(oldItems => [...oldItems, newItem])
       setProductDetails({  name: '', image: '', price: '' })
+    }else{
+      console.log("error")
     }
   }
   function addNewProduct() {
